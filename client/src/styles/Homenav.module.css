@@ -1,0 +1,38 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: #242a2e; */
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.nav a:link,
+.nav a:visited {
+  text-decoration: none;
+  color: #ececec;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* CSS Modules feature */
+.nav a:global(.active) {
+  color: #007bff;
+}
+
+a.ctaLink:link,
+a.ctaLink:visited {
+  background-color: #007bff;
+  color: #242a2e;
+  padding: 0.2rem 0.8rem;
+  border-radius: 7px;
+  font-size: 20px;
+  font-weight: 600;
+}
