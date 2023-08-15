@@ -4,10 +4,10 @@
   align-items: center;
   /* padding: 2rem; */
 }
-/* 
+
 li {
-  text-decoration: none;
-} */
+  list-style: none;
+}
 .dashboard_title {
   display: flex;
   justify-content: center;
@@ -69,7 +69,7 @@ li {
 
 .delete_button {
   position: absolute;
-  top: 10px;
+  top: 2px;
   right: 10px;
   background-color: #ff6464;
   color: white;
