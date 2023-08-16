@@ -19,7 +19,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: #1a1a1a;
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 260px);
 }
 
 .register-box {
@@ -71,4 +71,8 @@ h1 {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.signinnav {
+  padding: 2rem;
 }

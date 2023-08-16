@@ -37,7 +37,9 @@ function Signup() {
 
   return (
     <>
-      <HomeNav />
+      <div>
+        <HomeNav />
+      </div>
       <div className="register-container">
         <div className="register-box">
           <h1>Register</h1>
