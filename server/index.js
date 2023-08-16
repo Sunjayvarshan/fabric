@@ -5,9 +5,11 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const User = require("./models/usermodel");
 const Product = require("./models/productmodel");
+const cookieParser = require("cookie-parser");
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 mongoose.connect("mongodb://127.0.0.1:27017/register", {
   useNewUrlParser: true,
@@ -50,61 +52,10 @@ app.post("/api/login", async (req, res) => {
   });
 
   if (user) {
-    const token = jwt.sign(
-      {
-        name: user.name,
-        email: user.email,
-      },
-      "salt"
-    );
+    const token = jwt.sign({ name: user.name, email: user.email }, "secret123");
     return res.json({ status: "ok", user: token });
   } else {
     return res.json({ status: "error", user: false });
-  }
-  // const { email, password } = req.body;
-  // try {
-  //   const user = await User.findOne({ email });
-  //   if (!user) {
-  //     return res.json({ status: "error", user: false });
-  //   }
-  //   if (user) {
-  //     if (password !== user.password) {
-  //       return res.json({ status: "error", user: false });
-  //     }
-  //   }
-  //   res.json({ status: "ok", user: true });
-  // } catch (err) {
-  //   res.json({ status: "error", error: "An error occurred" });
-  // }
-});
-
-app.get("/api/admin", async (req, res) => {
-  const token = req.headers["x-access-token"];
-
-  try {
-    const decoded = jwt.verify(token, "salt");
-    const email = decoded.email;
-    const user = await User.findOne({ email: email });
-
-    return res.json({ status: "ok", quote: user.quote });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
-});
-
-app.post("/api/admin", async (req, res) => {
-  const token = req.headers["x-access-token"];
-
-  try {
-    const decoded = jwt.verify(token, "salt");
-    const email = decoded.email;
-    await User.updateOne({ email: email }, { $set: { quote: req.body.quote } });
-
-    return res.json({ status: "ok" });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
   }
 });
 

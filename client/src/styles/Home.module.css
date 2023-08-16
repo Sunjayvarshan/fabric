@@ -1,13 +1,12 @@
 body {
   height: 100vh;
   padding: 0;
-  margin: 0;
+  margin: 1rem;
 }
 
 .homepage {
-  margin: 0;
   height: calc(100vh);
-  /* margin: 2.5rem; */
+  margin: 0;
   background-image: linear-gradient(
       rgba(36, 42, 46, 0.8),
       rgba(36, 42, 46, 0.8)
@@ -52,4 +51,8 @@ body {
   font-weight: 600;
   padding: 1rem 3rem;
   border-radius: 5px;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
